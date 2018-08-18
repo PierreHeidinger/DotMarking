@@ -3,8 +3,12 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-
+import VModal from 'vue-js-modal'
+ 
 Vue.config.productionTip = false
+
+//middleware for modals
+Vue.use(VModal, { dynamic: true, injectModalsContainer: true })
 
 /* eslint-disable no-new */
 new Vue({
@@ -13,3 +17,4 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
+
