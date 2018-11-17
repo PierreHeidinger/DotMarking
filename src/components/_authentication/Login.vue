@@ -109,8 +109,9 @@ export default {
 
         try
         {
-
             const token_authentication = await new Authentication().login(this.user);
+
+            if (token_authentication) this.$router.push({'name' : 'Home'})
 
         }catch(err)
         {
@@ -122,11 +123,25 @@ export default {
              
       }
   },
-  created : function()
+  beforeRouteEnter : async function (to, from, next) 
   {
-       $(document).ready(function(){
-            $('.parallax').parallax();
-       });
+      try
+      {
+        var isValid = await new Authentication().verifyStatusToken();
+
+        if (!isValid)
+        {
+            next()
+        }else
+        {
+            window.location.replace('/')
+        }
+       
+      }catch(err)
+      {
+          console.error(err)
+
+      }
   }
 }
 </script>

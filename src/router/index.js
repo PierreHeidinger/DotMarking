@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import Login from '@/components/_authentication/Login'
-import Index from '@/components/_index/Index'
+import Home from '@/components/_home/Home'
 
 
 //Authentification
@@ -20,8 +20,8 @@ const router = new Router({
     },
     {
       path: '/',
-      name: 'Index',
-      component: Index,
+      name: 'Home',
+      component: Home,
       meta: { 
         requiresAuth: true
       }
@@ -56,6 +56,7 @@ router.beforeEach(async (to, from, next) => {
             path: '/login',
             params: { nextUrl: to.fullPath }
           })
+          
         }
       }
   }else {
