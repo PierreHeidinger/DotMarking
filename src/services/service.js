@@ -1,6 +1,4 @@
 import rp from 'request-promise'
-// import  * as configurationApi from '../../config/api.config'
-const configurationApi = require('../../config/api.json')
 
 export class Service
 {
@@ -11,7 +9,7 @@ export class Service
             "Content-Type" : "application/json",
             "x-access-token" : localStorage.getItem('token_auth') || ""
         }
-        this.uri = configurationApi.BASE_URL_API;
+        this.uri = process.env.BASE_URL_API;
     };
 
     async get(url)
